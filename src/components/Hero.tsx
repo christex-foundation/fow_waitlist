@@ -1,7 +1,7 @@
 import { motion, useReducedMotion, type Variants } from 'motion/react'
-import { ArrowRight } from 'lucide-react'
 import { EASE_OUT } from '../lib/motion'
 import { useWaitlist } from '../lib/waitlist-context'
+import HeroBadges from './FloatingCards'
 
 export default function Hero() {
   const { open } = useWaitlist()
@@ -10,120 +10,113 @@ export default function Hero() {
   const container: Variants = {
     hidden: {},
     show: {
-      transition: { staggerChildren: reduce ? 0 : 0.12, delayChildren: 0.08 },
+      transition: { staggerChildren: reduce ? 0 : 0.08, delayChildren: 0.05 },
     },
   }
 
-  // Editorial clip-reveal: each display line rises from its own baseline.
-  const line: Variants = {
-    hidden: reduce ? { opacity: 0 } : { y: '110%' },
-    show: {
-      y: '0%',
-      opacity: 1,
-      transition: { duration: reduce ? 0.3 : 0.85, ease: EASE_OUT },
-    },
-  }
-  const arrow: Variants = {
-    hidden: reduce ? { opacity: 0 } : { opacity: 0, scale: 0.92, rotate: -4 },
-    show: {
-      opacity: 1,
-      scale: 1,
-      rotate: 0,
-      transition: { duration: reduce ? 0.3 : 0.9, ease: EASE_OUT },
-    },
-  }
-  const cluster: Variants = {
+  const rise: Variants = {
     hidden: reduce ? { opacity: 0 } : { opacity: 0, y: 16 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: reduce ? 0.3 : 0.7, ease: EASE_OUT },
+      transition: { duration: reduce ? 0.3 : 0.6, ease: EASE_OUT },
+    },
+  }
+
+  const stage: Variants = {
+    hidden: reduce ? { opacity: 0 } : { opacity: 0, y: 24 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: reduce ? 0.3 : 0.8, ease: EASE_OUT },
     },
   }
 
   return (
-    <section id="top" className="relative isolate overflow-hidden bg-canvas">
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="relative mx-auto flex min-h-[calc(100vh-3.5rem)] w-full max-w-[1500px] flex-col justify-center px-5 pb-10 pt-6 sm:px-8"
-      >
-        {/* Signature: a bold "growth" composition — a thick vertical shaft on
-            the left that widens into a solid base block, plus a chunky diagonal
-            arrow whose tip reaches into the top-right corner. The headline
-            sits over the orange. */}
-        <motion.svg
-          variants={arrow}
-          aria-hidden="true"
-          viewBox="0 0 120 120"
-          preserveAspectRatio="xMidYMid slice"
-          className="pointer-events-none absolute right-0 top-0 z-0 h-[48%] w-auto text-accent opacity-90 sm:h-[58%] lg:inset-y-0 lg:h-full lg:opacity-100"
-        >
-          {/* vertical shaft + solid base block */}
-          <path fill="currentColor" d="M4 14 H42 V82 H102 V120 H4 Z" />
-          {/* chunky diagonal arrow pointing into the top-right corner */}
-          <path
-            fill="currentColor"
-            d="M112 16 L69.6 16 L83 29.4 L42.2 74.2 L57.8 89.8 L98.6 45 L112 58.4 Z"
-          />
-        </motion.svg>
-
-        {/* Giant FUTURE / OF / WORK lockup */}
-        <h1
-          aria-label="Future of Work"
-          className="relative z-10 select-none font-black uppercase leading-[0.82] tracking-[-0.045em] text-ink"
-          style={{ fontSize: 'clamp(2.75rem, 14vw, 11.5rem)' }}
-        >
-          {['Future', 'Of', 'Work'].map((word, i) => (
-            <span
-              key={word}
-              aria-hidden="true"
-              className={
-                'block overflow-hidden' + (i === 2 ? ' lg:pl-[40%]' : '')
-              }
-            >
-              <motion.span variants={line} className="block">
-                {word}
-              </motion.span>
-            </span>
-          ))}
-        </h1>
-
-        {/* Bottom-left cluster: pitch + paired CTAs */}
+    <section id="top" className="relative overflow-hidden">
+      <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-5 pb-10 pt-12 sm:px-8 sm:pt-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8 lg:pb-16">
+        {/* Left: editorial copy, left-aligned */}
         <motion.div
-          variants={cluster}
-          className="relative z-10 mt-9 max-w-sm sm:mt-12 lg:absolute lg:bottom-[7%] lg:left-8 lg:mt-0"
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="max-w-xl"
         >
-          <p className="text-base font-bold text-ink sm:text-lg">
-            Sierra Leone's freelance marketplace.
-          </p>
-          <p className="mt-1.5 text-sm leading-snug text-ink/70 sm:text-base">
-            Connect local talent with real opportunity — earn, grow, and build a
-            name that travels.
-          </p>
+          <motion.p
+            variants={rise}
+            className="text-xs font-semibold uppercase tracking-[0.18em] text-ink/50"
+          >
+            Sierra Leone's freelance marketplace
+          </motion.p>
 
-          <div className="mt-5 flex flex-wrap items-center gap-3">
+          <motion.h1
+            variants={rise}
+            className="mt-5 text-balance text-4xl font-semibold leading-[1.03] tracking-tight text-ink sm:text-6xl"
+          >
+            Freelance work,
+            <br className="hidden sm:block" /> built for{' '}
+            <span className="relative inline-block">
+              <span
+                aria-hidden="true"
+                className="absolute inset-x-[-0.08em] bottom-[0.08em] h-[0.42em] -rotate-1 bg-accent/70"
+              />
+              <span className="relative">Salone</span>
+            </span>
+            .
+          </motion.h1>
+
+          <motion.p
+            variants={rise}
+            className="mt-6 max-w-md text-lg leading-relaxed text-ink/65"
+          >
+            Future of Work connects Sierra Leonean freelancers with clients at
+            home and abroad. Set your rates, get paid reliably, and build a name
+            that opens doors.
+          </motion.p>
+
+          <motion.div variants={rise} className="mt-8 flex flex-wrap items-center gap-3">
             <button
               type="button"
               onClick={() => open()}
-              className="group inline-flex items-center gap-2 rounded-lg bg-ink px-5 py-3 text-sm font-medium text-canvas transition hover:bg-ink/85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+              className="inline-flex items-center justify-center rounded-lg bg-ink px-6 py-3.5 text-sm font-medium text-canvas transition-colors hover:bg-ink/85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
             >
               Join the waitlist
-              <ArrowRight
-                size={16}
-                className="transition-transform duration-300 group-hover:translate-x-1"
-              />
             </button>
             <a
               href="#why"
-              className="inline-flex items-center rounded-lg border border-ink/25 px-5 py-3 text-sm font-medium text-ink transition hover:border-ink/50 hover:bg-ink/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+              className="inline-flex items-center justify-center rounded-lg border border-ink/20 px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:border-ink/40 hover:bg-ink/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
             >
-              See how it works
+              How it works
             </a>
-          </div>
+          </motion.div>
+
+          <motion.p variants={rise} className="mt-5 text-sm text-ink/45">
+            Free to join · No fees to apply · Launching 2026
+          </motion.p>
         </motion.div>
-      </motion.div>
+
+        {/* Right: portrait on a warm panel with honest pinned badges */}
+        <motion.div
+          variants={stage}
+          initial="hidden"
+          animate="show"
+          className="relative mx-auto flex h-[380px] w-full max-w-md items-end justify-center sm:h-[480px] lg:mx-0"
+        >
+          <div
+            aria-hidden="true"
+            className="absolute bottom-0 left-1/2 -z-10 h-[92%] w-[90%] -translate-x-1/2 rounded-[2.5rem] bg-accent/15"
+          />
+
+          <img
+            src="/hero-portrait.png"
+            alt="A freelancer in Freetown reviewing work on her phone"
+            className="h-full w-auto select-none object-contain object-bottom"
+            draggable={false}
+          />
+
+          <HeroBadges />
+        </motion.div>
+      </div>
     </section>
   )
 }
