@@ -25,11 +25,16 @@ export default function SkillsRow() {
   const reduce = useReducedMotion()
 
   return (
-    <section id="skills" className="px-5 py-16 sm:px-8 sm:py-20">
+    <section id="skills" className="px-5 py-14 sm:px-8 sm:py-16">
       <div className="mx-auto max-w-6xl">
-        <p className="text-center text-sm font-medium text-ink/55">
-          Explore skills in high demand
-        </p>
+        <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+          <h2 className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+            Skills in demand
+          </h2>
+          <p className="text-sm text-ink/55">
+            Whatever you do best, there’s work for it.
+          </p>
+        </div>
 
         <motion.ul
           initial="hidden"
@@ -37,30 +42,25 @@ export default function SkillsRow() {
           viewport={{ once: true, margin: '0px 0px -10% 0px' }}
           variants={{
             hidden: {},
-            show: { transition: { staggerChildren: reduce ? 0 : 0.06 } },
+            show: { transition: { staggerChildren: reduce ? 0 : 0.05 } },
           }}
-          className="mt-8 flex snap-x gap-3 overflow-x-auto pb-2 sm:flex-wrap sm:justify-center sm:overflow-visible"
+          className="mt-8 flex flex-wrap gap-2.5"
         >
           {skills.map(({ label, icon: Icon }) => (
             <motion.li
               key={label}
               variants={{
-                hidden: reduce ? { opacity: 0 } : { opacity: 0, y: 12 },
+                hidden: reduce ? { opacity: 0 } : { opacity: 0, y: 10 },
                 show: {
                   opacity: 1,
                   y: 0,
-                  transition: { duration: 0.5, ease: EASE_OUT },
+                  transition: { duration: 0.45, ease: EASE_OUT },
                 },
               }}
-              className="snap-start"
             >
-              <span className="group flex shrink-0 cursor-default items-center gap-2.5 rounded-2xl border border-line bg-card px-4 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-ink/25 hover:shadow-md hover:shadow-ink/5">
-                <span className="grid h-9 w-9 place-items-center rounded-xl bg-ink/5 text-ink transition-colors group-hover:bg-ink group-hover:text-canvas">
-                  <Icon size={18} />
-                </span>
-                <span className="whitespace-nowrap text-sm font-medium text-ink">
-                  {label}
-                </span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-card px-4 py-2.5 text-sm font-medium text-ink transition-colors hover:border-ink/40">
+                <Icon size={16} className="text-ink/45" />
+                {label}
               </span>
             </motion.li>
           ))}

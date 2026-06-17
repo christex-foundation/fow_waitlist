@@ -1,5 +1,4 @@
 import { useState, type FormEvent } from 'react'
-import { ArrowRight } from 'lucide-react'
 import Reveal from './Reveal'
 import { useWaitlist } from '../lib/waitlist-context'
 
@@ -13,45 +12,49 @@ export default function WaitlistCTA() {
   }
 
   return (
-    <section id="waitlist" className="px-5 py-20 sm:px-8 sm:py-28">
-      <Reveal className="mx-auto max-w-3xl text-center">
-        <h2 className="text-balance text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
-          Join the waitlist and get{' '}
-          <span className="font-serif font-normal italic">early access</span>.
-        </h2>
-        <p className="mx-auto mt-4 max-w-md text-ink/60">
-          Drop your email to start. We'll ask a couple of quick questions, then keep
-          you posted as we launch.
-        </p>
+    <section id="waitlist" className="px-5 py-16 sm:px-8 sm:py-24">
+      <Reveal className="mx-auto max-w-6xl">
+        <div className="overflow-hidden rounded-[2rem] bg-ink px-6 py-12 text-canvas sm:px-12 sm:py-16">
+          <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+            <div className="max-w-xl">
+              <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+                Be first in line.
+              </h2>
+              <p className="mt-4 max-w-md text-canvas/65">
+                Join the waitlist and we’ll let you know the moment Future of
+                Work opens. One email when it’s time — no spam.
+              </p>
+              <p className="mt-4 font-serif text-lg italic text-canvas/50">
+                Made for Salone, by people who get it.
+              </p>
+            </div>
 
-        <form
-          onSubmit={onSubmit}
-          className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row sm:items-center sm:rounded-full sm:border sm:border-line sm:bg-card sm:p-1.5 sm:shadow-sm"
-        >
-          <label htmlFor="cta-email" className="sr-only">
-            Email address
-          </label>
-          <input
-            id="cta-email"
-            type="email"
-            inputMode="email"
-            autoComplete="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="you@email.com"
-            className="w-full rounded-full border border-line bg-card px-5 py-3.5 text-ink outline-none transition placeholder:text-ink/35 focus:border-ink/40 focus:ring-4 focus:ring-ink/5 sm:flex-1 sm:border-0 sm:bg-transparent sm:py-2.5 sm:focus:ring-0"
-          />
-          <button
-            type="submit"
-            className="group inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 font-medium text-canvas transition hover:bg-ink/85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink sm:py-3"
-          >
-            Join the waitlist
-            <ArrowRight
-              size={18}
-              className="transition-transform duration-300 group-hover:translate-x-1"
-            />
-          </button>
-        </form>
+            <form
+              onSubmit={onSubmit}
+              className="flex w-full flex-col gap-3 sm:flex-row lg:w-auto"
+            >
+              <label htmlFor="cta-email" className="sr-only">
+                Email address
+              </label>
+              <input
+                id="cta-email"
+                type="email"
+                inputMode="email"
+                autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="you@email.com"
+                className="w-full rounded-lg border border-canvas/20 bg-canvas/5 px-5 py-3.5 text-canvas outline-none transition placeholder:text-canvas/40 focus:border-canvas/50 sm:w-72"
+              />
+              <button
+                type="submit"
+                className="rounded-lg bg-accent px-6 py-3.5 font-medium text-ink transition-colors hover:bg-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >
+                Join the waitlist
+              </button>
+            </form>
+          </div>
+        </div>
       </Reveal>
     </section>
   )

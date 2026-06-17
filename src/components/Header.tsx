@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { ArrowUpRight } from 'lucide-react'
 import Logo from './Logo'
 import { useWaitlist } from '../lib/waitlist-context'
 
@@ -46,13 +45,9 @@ export default function Header() {
         <button
           type="button"
           onClick={() => open()}
-          className="group inline-flex items-center gap-1.5 rounded-full bg-ink px-4 py-2.5 text-sm font-medium text-canvas transition hover:bg-ink/85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+          className="inline-flex items-center rounded-lg bg-ink px-4 py-2.5 text-sm font-medium text-canvas transition-colors hover:bg-ink/85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
         >
           Join the waitlist
-          <ArrowUpRight
-            size={16}
-            className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-          />
         </button>
       </div>
     </header>

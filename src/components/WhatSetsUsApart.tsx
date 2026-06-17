@@ -1,45 +1,53 @@
-import { Zap, ShieldCheck, Sprout, type LucideIcon } from 'lucide-react'
 import Reveal from './Reveal'
 
-const features: { title: string; body: string; icon: LucideIcon }[] = [
+const points = [
   {
-    title: 'Fast opportunities',
-    body: 'Set up a profile in minutes and get matched to work that fits your skills, not the other way around.',
-    icon: Zap,
+    n: '01',
+    title: 'Built for how Salone works',
+    body: 'Mobile-first and light on data. Get paid in Leones or US dollars, whichever suits the job.',
   },
   {
-    title: 'Secure & fair',
-    body: 'Clear terms and protected payments, so you always know what you earn and when it lands.',
-    icon: ShieldCheck,
+    n: '02',
+    title: 'You set the terms',
+    body: 'Choose your rates and your clients. Clear agreements and protected payments mean you always know what you’ll earn and when it lands.',
   },
   {
-    title: 'Grow your future',
-    body: 'Build a track record clients trust, take on bigger work, and reach buyers at home and abroad.',
-    icon: Sprout,
+    n: '03',
+    title: 'A reputation that travels',
+    body: 'Reviews and a portfolio that follow you — so local work today turns into clients abroad tomorrow.',
   },
 ]
 
 export default function WhatSetsUsApart() {
   return (
-    <section id="why" className="px-5 py-8 sm:px-8 sm:py-12">
-      <div className="mx-auto max-w-6xl rounded-[2rem] border border-line bg-card px-6 py-12 sm:px-12 sm:py-16">
+    <section id="why" className="px-5 py-16 sm:px-8 sm:py-24">
+      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         <Reveal>
-          <p className="text-sm font-medium text-ink/55">Why Future of Work</p>
-          <h2 className="mt-3 max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-            What sets us{' '}
-            <span className="font-serif font-normal italic">apart</span>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-ink/50">
+            Why Future of Work
+          </p>
+          <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-ink sm:text-4xl">
+            Made for the people doing the work.
           </h2>
+          <p className="mt-4 max-w-sm text-ink/60">
+            No middlemen taking a cut of your hustle — just the tools to get
+            hired and get paid.
+          </p>
         </Reveal>
 
-        <div className="mt-10 grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-3">
-          {features.map(({ title, body, icon: Icon }, i) => (
-            <Reveal key={title} delay={i * 0.08}>
-              <div className="border-t border-line pt-6">
-                <span className="grid h-11 w-11 place-items-center rounded-xl bg-ink text-canvas">
-                  <Icon size={20} />
+        <div>
+          {points.map(({ n, title, body }, i) => (
+            <Reveal key={n} delay={i * 0.08}>
+              <div className="grid grid-cols-[auto_1fr] gap-5 border-t border-line py-6 last:border-b sm:gap-8 sm:py-7">
+                <span className="font-serif text-2xl leading-none text-ink/30 sm:text-3xl">
+                  {n}
                 </span>
-                <h3 className="mt-5 text-lg font-semibold text-ink">{title}</h3>
-                <p className="mt-2 text-ink/60">{body}</p>
+                <div>
+                  <h3 className="text-lg font-semibold text-ink sm:text-xl">
+                    {title}
+                  </h3>
+                  <p className="mt-2 max-w-md text-ink/60">{body}</p>
+                </div>
               </div>
             </Reveal>
           ))}
