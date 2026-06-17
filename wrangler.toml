@@ -1,0 +1,7 @@
+# Cloudflare Pages config. Used by `wrangler pages dev` and Pages deployments.
+name = "future-of-work-landing"
+compatibility_date = "2026-01-01"
+pages_build_output_dir = "dist"
+
+# Secrets (AIRTABLE_TOKEN, AIRTABLE_BASE_ID, AIRTABLE_TABLE) are NOT stored here.
+# Local dev: put them in `.dev.vars`. Production: set them in the Pages dashboard.
