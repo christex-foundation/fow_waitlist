@@ -3,6 +3,7 @@ import Logo from './Logo'
 import { useWaitlist } from '../lib/waitlist-context'
 
 const navLinks = [
+  { label: 'How it works', href: '#how' },
   { label: 'Skills', href: '#skills' },
   { label: 'Why us', href: '#why' },
   { label: 'Waitlist', href: '#waitlist' },

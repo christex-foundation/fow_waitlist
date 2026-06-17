@@ -1,6 +1,7 @@
 import Logo from './Logo'
 
 const navLinks = [
+  { label: 'How it works', href: '#how' },
   { label: 'Skills', href: '#skills' },
   { label: 'Why us', href: '#why' },
   { label: 'Waitlist', href: '#waitlist' },

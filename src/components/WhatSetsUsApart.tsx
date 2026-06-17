@@ -1,4 +1,5 @@
 import Reveal from './Reveal'
+import Peaks from './Peaks'
 
 const points = [
   {
@@ -39,9 +40,11 @@ export default function WhatSetsUsApart() {
           {points.map(({ n, title, body }, i) => (
             <Reveal key={n} delay={i * 0.08}>
               <div className="grid grid-cols-[auto_1fr] gap-5 border-t border-line py-6 last:border-b sm:gap-8 sm:py-7">
-                <span className="font-serif text-2xl leading-none text-ink/30 sm:text-3xl">
-                  {n}
-                </span>
+                <Peaks
+                  variant="line"
+                  strokeWidth={3}
+                  className="mt-1.5 h-5 w-10 text-indigo/45"
+                />
                 <div>
                   <h3 className="text-lg font-semibold text-ink sm:text-xl">
                     {title}
