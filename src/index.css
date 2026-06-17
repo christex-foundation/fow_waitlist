@@ -1,0 +1,26 @@
+@import 'tailwindcss';
+
+/* Future of Work — Salone-first theme.
+   Palette nods to the Sierra Leone flag (green / white / blue). */
+@theme {
+  --color-fow-green: #1a8d4c;
+  --color-fow-green-dark: #136b3a;
+  --color-fow-blue: #1f6feb;
+  --color-fow-ink: #0f172a;
+  --color-fow-muted: #475569;
+  --color-fow-sand: #f7f7f2;
+
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-fow-sand);
+  color: var(--color-fow-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
