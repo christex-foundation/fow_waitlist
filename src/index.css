@@ -1,16 +1,16 @@
 @import 'tailwindcss';
 
-/* Future of Work — Salone-first theme.
-   Palette nods to the Sierra Leone flag (green / white / blue). */
+/* Future of Work — cream + ink, two-tone.
+   Canvas #F0EEE9 / Ink #1C1C1C, per the moodboard. */
 @theme {
-  --color-fow-green: #1a8d4c;
-  --color-fow-green-dark: #136b3a;
-  --color-fow-blue: #1f6feb;
-  --color-fow-ink: #0f172a;
-  --color-fow-muted: #475569;
-  --color-fow-sand: #f7f7f2;
+  --color-canvas: #f0eee9;
+  --color-ink: #1c1c1c;
+  --color-card: #fbfaf7;
+  --color-line: rgba(28, 28, 28, 0.1);
+  --color-accent: #f7901e;
 
-  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Geist', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
 }
 
 html {
@@ -19,8 +19,21 @@ html {
 
 body {
   margin: 0;
-  background: var(--color-fow-sand);
-  color: var(--color-fow-ink);
+  background: var(--color-canvas);
+  color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Honour reduced-motion globally as a safety net under JS gating. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
