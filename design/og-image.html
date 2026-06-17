@@ -1,0 +1,201 @@
+<!doctype html>
+<!--
+  Source for public/og-image.png (1200x630 social share card).
+  Edit here, then re-render (run from the repo root; virtual-time lets web fonts load):
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+      --headless --disable-gpu --hide-scrollbars --force-device-scale-factor=1 \
+      --virtual-time-budget=4000 --window-size=1200,630 \
+      --screenshot="$(pwd)/public/og-image.png" "file://$(pwd)/design/og-image.html"
+  This file lives outside public/ so it is NOT deployed - only the rendered PNG ships.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --canvas: #f0eee9;
+        --ink: #1c1c1c;
+        --accent: #f7901e;
+        --indigo: #2b2a6b;
+        --line: rgba(28, 28, 28, 0.1);
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+        background: var(--canvas);
+      }
+      .card {
+        position: relative;
+        width: 1200px;
+        height: 630px;
+        background: var(--canvas);
+        color: var(--ink);
+        font-family: 'Geist', system-ui, sans-serif;
+        overflow: hidden;
+        padding: 64px 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      /* Soft gara-indigo wash in the top-right, echoing the site's quiet accents. */
+      .card::before {
+        content: '';
+        position: absolute;
+        top: -360px;
+        right: -260px;
+        width: 720px;
+        height: 720px;
+        background: radial-gradient(
+          circle,
+          rgba(43, 42, 107, 0.12),
+          rgba(43, 42, 107, 0) 70%
+        );
+      }
+      .card::after {
+        content: '';
+        position: absolute;
+        bottom: -300px;
+        left: -200px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(247, 144, 30, 0.1),
+          rgba(247, 144, 30, 0) 70%
+        );
+      }
+      .row {
+        position: relative;
+        z-index: 1;
+      }
+      /* Brand lockup: F monogram + wordmark (matches src/components/Logo.tsx). */
+      .brand {
+        position: absolute;
+        top: 64px;
+        left: 80px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .mark {
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        background: var(--ink);
+        color: var(--canvas);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        font-weight: 700;
+      }
+      .wordmark {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.05;
+      }
+      .wordmark b {
+        font-size: 26px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+      .wordmark span {
+        margin-top: 5px;
+        font-size: 16px;
+        color: rgba(28, 28, 28, 0.45);
+        letter-spacing: 0.02em;
+      }
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-size: 19px;
+        font-weight: 600;
+        color: var(--accent);
+        margin-bottom: 18px;
+      }
+      h1 {
+        font-size: 68px;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1;
+        max-width: 1000px;
+      }
+      h1 i {
+        font-family: 'Instrument Serif', Georgia, serif;
+        font-weight: 400;
+        font-style: italic;
+        color: var(--indigo);
+        letter-spacing: 0;
+      }
+      .sub {
+        margin-top: 26px;
+        font-size: 25px;
+        line-height: 1.35;
+        color: rgba(28, 28, 28, 0.72);
+        max-width: 780px;
+      }
+      .facts {
+        position: absolute;
+        bottom: 110px;
+        left: 80px;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .pill {
+        font-size: 17px;
+        font-weight: 500;
+        line-height: 1;
+        color: var(--ink);
+        background: #fbfaf7;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 12px 18px;
+      }
+      .pill.solid {
+        background: var(--ink);
+        color: var(--canvas);
+        border-color: var(--ink);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="row brand">
+        <div class="mark">F</div>
+        <div class="wordmark">
+          <b>Future of Work</b>
+          <span>Salone-first marketplace</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="eyebrow">Sierra Leone's freelance marketplace</div>
+        <h1>Freelance work, <i>built for Salone.</i></h1>
+        <div class="sub">
+          Set your own rates, get paid reliably in Leones or USD, and build a
+          name that travels.
+        </div>
+      </div>
+
+      <div class="row facts">
+        <span class="pill solid">Join the waitlist</span>
+        <span class="pill">Made in Sierra Leone</span>
+        <span class="pill">Paid in Le or USD</span>
+        <span class="pill">Launching 2026</span>
+      </div>
+    </div>
+  </body>
+</html>
