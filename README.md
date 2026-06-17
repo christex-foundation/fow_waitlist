@@ -9,9 +9,9 @@ signups into **Airtable**.
 - **Vite + React + TypeScript** — fast, single-page React app
 - **Tailwind CSS v4** — mobile-first styling
 - **React Hook Form + Zod** — validated waitlist form
-- **Cloudflare Pages Function** (`functions/api/waitlist.ts`) — proxies submissions
-  to Airtable so the Airtable token never reaches the browser
-- **Cloudflare Pages** — hosting (serves the static SPA + the function)
+- **Vercel Edge Function** (`api/waitlist.ts`) — proxies submissions to Airtable
+  so the Airtable token never reaches the browser
+- **Vercel** — hosting (serves the static SPA + the function)
 
 ## Develop
 
@@ -20,12 +20,12 @@ npm install
 npm run dev            # Vite dev server (UI only; /api/waitlist not available)
 ```
 
-To run the **Airtable function locally**, build then serve with Wrangler:
+To run the **Airtable function locally**, use the Vercel CLI:
 
 ```bash
-cp .env.example .dev.vars   # fill in your Airtable token, base id, table
-npm run build
-npx wrangler pages dev dist
+cp .env.example .env   # fill in your Airtable token, base id, table
+npm i -g vercel        # if not already installed
+vercel dev             # serves the SPA + /api/waitlist together
 ```
 
 ## Airtable setup
@@ -48,8 +48,8 @@ Create a base with a table (default name **`Waitlist`**) and these fields:
 
 ## Environment variables
 
-Set these as **secrets** in Cloudflare Pages → Settings → Variables (and in
-`.dev.vars` locally):
+Set these in Vercel → Project → Settings → Environment Variables (and in a local
+`.env` for `vercel dev`):
 
 - `AIRTABLE_TOKEN` — Airtable Personal Access Token
 - `AIRTABLE_BASE_ID` — e.g. `appXXXXXXXXXXXXXX`
@@ -57,9 +57,11 @@ Set these as **secrets** in Cloudflare Pages → Settings → Variables (and in
 
 ## Deploy
 
-Connect the repo to **Cloudflare Pages** with:
+Import the repo at [vercel.com/new](https://vercel.com/new). Vercel auto-detects
+Vite:
 
 - Build command: `npm run build`
 - Output directory: `dist`
 
-Then add the environment variables above. Pushes deploy automatically.
+Add the environment variables above (Production + Preview), then deploy. Pushes
+deploy automatically. Or from the CLI: `vercel --prod`.

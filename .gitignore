@@ -14,8 +14,9 @@ dist-ssr
 
 # Secrets
 .env
-.dev.vars
-.wrangler
+
+# Vercel
+.vercel
 
 # Editor directories and files
 .vscode/*

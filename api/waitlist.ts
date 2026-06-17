@@ -1,21 +1,17 @@
 /**
- * Cloudflare Pages Function — POST /api/waitlist
+ * Vercel Edge Function — POST /api/waitlist
  *
  * Receives the waitlist form from the browser and writes a row to Airtable.
- * The Airtable token lives only here (as a secret env var) and never reaches
+ * The Airtable token lives only here (as a project env var) and never reaches
  * the client bundle.
  *
- * Required environment variables (set in Cloudflare Pages → Settings → Variables):
+ * Required environment variables (set in Vercel → Project → Settings → Environment Variables):
  *   AIRTABLE_TOKEN     Airtable Personal Access Token (secret)
  *   AIRTABLE_BASE_ID   e.g. appXXXXXXXXXXXXXX
  *   AIRTABLE_TABLE     table name, e.g. "Waitlist"  (optional, defaults to "Waitlist")
  */
 
-interface Env {
-  AIRTABLE_TOKEN: string
-  AIRTABLE_BASE_ID: string
-  AIRTABLE_TABLE?: string
-}
+export const config = { runtime: 'edge' }
 
 type Payload = {
   name?: unknown
@@ -34,8 +30,16 @@ const json = (data: unknown, status = 200) =>
 
 const str = (v: unknown) => (typeof v === 'string' ? v.trim() : '')
 
-export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
-  if (!env.AIRTABLE_TOKEN || !env.AIRTABLE_BASE_ID) {
+export default async function handler(request: Request): Promise<Response> {
+  if (request.method !== 'POST') {
+    return json({ error: 'Method not allowed.' }, 405)
+  }
+
+  const AIRTABLE_TOKEN = process.env.AIRTABLE_TOKEN
+  const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID
+  const AIRTABLE_TABLE = process.env.AIRTABLE_TABLE
+
+  if (!AIRTABLE_TOKEN || !AIRTABLE_BASE_ID) {
     return json({ error: 'Server is not configured.' }, 500)
   }
 
@@ -64,8 +68,8 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     return json({ error: 'Invalid role.' }, 400)
   }
 
-  const table = encodeURIComponent(env.AIRTABLE_TABLE ?? 'Waitlist')
-  const url = `https://api.airtable.com/v0/${env.AIRTABLE_BASE_ID}/${table}`
+  const table = encodeURIComponent(AIRTABLE_TABLE ?? 'Waitlist')
+  const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${table}`
 
   const fields: Record<string, string> = { Name: name, Role: role }
   if (email) fields.Email = email
@@ -77,7 +81,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   const res = await fetch(url, {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${env.AIRTABLE_TOKEN}`,
+      Authorization: `Bearer ${AIRTABLE_TOKEN}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ records: [{ fields }], typecast: true }),
