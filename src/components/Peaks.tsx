@@ -1,15 +1,15 @@
 import type { SVGProps } from 'react'
 
 /**
- * The Lion Mountains — Sierra Leone literally means "Serra Lyoa", the lion-shaped
- * peaks above Freetown. This is the page's one signature: a hand-drawn ridge that
- * recurs as a structural device (hero backdrop, section markers).
+ * A horizon ridge — the page's one signature: a hand-drawn mountain range that
+ * recurs as a structural device (hero backdrop, section markers). Reads as a
+ * sunrise-over-the-hills landscape, not tied to any one place.
  *
  * Colour comes from `currentColor`, so set it with a text-* class on the caller
  * (e.g. `className="text-indigo"`). Always decorative — rendered aria-hidden.
  */
 
-// A single ridge with one dominant peak (Sugar Loaf) and uneven supporting
+// A single ridge with one dominant peak and uneven supporting
 // summits, so it reads as drawn by hand rather than a tidy triangle.
 const RIDGE =
   'M0 158 L40 131 L72 145 L106 95 L134 121 L172 150 L210 50 L248 123 L278 99 L314 150 L346 114 L382 139 L418 119 L454 145 L480 133'

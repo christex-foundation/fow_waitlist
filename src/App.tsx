@@ -12,7 +12,7 @@ import Footer from './components/Footer'
 export default function App() {
   return (
     <WaitlistProvider>
-      {/* Sunrise over the hills — a quiet gara-indigo → Salone-sun aurora glow
+      {/* Sunrise over the hills — a quiet indigo → warm-sun aurora glow
           at the top, dialed down so it never competes with the content. */}
       <div
         aria-hidden="true"
