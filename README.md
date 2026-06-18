@@ -1,6 +1,6 @@
 # Future of Work — Landing Page
 
-A Salone-first (Sierra Leone–first) freelance marketplace, à la Upwork/Fiverr.
+A freelance marketplace built in Africa for the world, à la Upwork/Fiverr.
 This repo is the **marketing landing page** whose job is to capture waitlist
 signups into **Airtable**.
 
