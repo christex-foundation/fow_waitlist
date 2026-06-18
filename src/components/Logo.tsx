@@ -25,7 +25,7 @@ export default function Logo({ tone = 'dark', showSub = true }: LogoProps) {
         </span>
         {showSub && (
           <span className={`mt-1 text-[11px] tracking-wide ${sub}`}>
-            Salone-first marketplace
+            Built in Africa
           </span>
         )}
       </span>

@@ -47,21 +47,21 @@ export default function Hero() {
             variants={rise}
             className="text-sm font-semibold uppercase tracking-[0.18em] text-ink/50"
           >
-            Sierra Leone's freelance marketplace
+            A freelance marketplace out of Africa
           </motion.p>
 
           <motion.h1
             variants={rise}
             className="mt-5 text-balance text-6xl font-semibold leading-[0.98] tracking-[-0.02em] text-ink sm:text-[5.25rem]"
           >
-            Freelance work,
-            <br className="hidden sm:block" /> built for{' '}
+            Freelance work, built in Africa,
+            <br className="hidden sm:block" /> made for{' '}
             <span className="relative inline-block">
               <span
                 aria-hidden="true"
                 className="absolute inset-x-[-0.08em] bottom-[0.08em] h-[0.42em] -rotate-1 bg-accent/70"
               />
-              <span className="relative">Salone</span>
+              <span className="relative">the world</span>
             </span>
             .
           </motion.h1>
@@ -70,9 +70,9 @@ export default function Hero() {
             variants={rise}
             className="mt-6 max-w-lg text-xl leading-relaxed text-ink/65"
           >
-            Future of Work connects Sierra Leonean freelancers with clients at
-            home and abroad. Set your rates, get paid reliably, and build a name
-            that opens doors.
+            Future of Work connects African freelancers with clients around the
+            world. Set your rates, get paid reliably, and build a name that
+            travels.
           </motion.p>
 
           <motion.div variants={rise} className="mt-8 flex flex-wrap items-center gap-3">
@@ -123,7 +123,7 @@ export default function Hero() {
           className="mx-auto w-full max-w-lg lg:mx-0"
         >
           <div className="relative flex h-[440px] w-full items-end justify-center sm:h-[560px]">
-            {/* Signature: the Freetown hills rising behind her — a tinted
+            {/* Signature: the hills rising behind her — a tinted
                 silhouette with a hand-drawn ridge sketched over it. */}
             <div
               aria-hidden="true"
@@ -144,14 +144,14 @@ export default function Hero() {
 
             <img
               src="/hero-portrait.png"
-              alt="A freelancer in Freetown reviewing work on her phone"
+              alt="A freelancer reviewing work on her phone"
               className="h-full w-auto select-none object-contain object-bottom"
               draggable={false}
             />
 
             {/* A photo caption, not a metric. */}
             <figcaption className="pointer-events-none absolute bottom-3 left-3 font-serif text-sm italic text-ink/55">
-              Freetown · 2026
+              Africa · 2026
             </figcaption>
           </div>
 

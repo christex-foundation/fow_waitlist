@@ -25,7 +25,7 @@ export default function WaitlistCTA() {
                 Work opens. One email when it’s time — no spam.
               </p>
               <p className="mt-4 font-serif text-lg italic text-canvas/50">
-                Made for Salone, by people who get it.
+                Built in Africa, by people who get it.
               </p>
             </div>
 

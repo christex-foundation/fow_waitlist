@@ -28,8 +28,8 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col gap-2 border-t border-canvas/10 pt-6 text-xs text-canvas/45 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Future of Work. Made in Sierra Leone.</p>
-          <p>Connecting Salone talent with the world.</p>
+          <p>© {new Date().getFullYear()} Future of Work. Built in Africa.</p>
+          <p>Connecting African talent with the world.</p>
         </div>
       </div>
     </footer>

@@ -4,8 +4,8 @@ import Peaks from './Peaks'
 const points = [
   {
     n: '01',
-    title: 'Built for how Salone works',
-    body: 'Mobile-first and light on data. Get paid in Leones or US dollars, whichever suits the job.',
+    title: 'Built for how Africa works',
+    body: 'Mobile-first and light on data. Get paid in your local currency or US dollars, whichever suits the job.',
   },
   {
     n: '02',

@@ -15,7 +15,7 @@ const steps = [
   {
     n: '03',
     title: 'Get paid',
-    body: "The money's held safely from the start and released when the work is done — in Leones or US dollars.",
+    body: "The money's held safely from the start and released when the work is done — in your local currency or US dollars.",
   },
 ]
 

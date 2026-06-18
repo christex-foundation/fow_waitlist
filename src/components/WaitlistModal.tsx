@@ -155,7 +155,7 @@ export default function WaitlistModal({ isOpen, prefillEmail, onClose }: ModalPr
                 </h2>
                 <p className="mx-auto mt-3 max-w-sm text-ink/65">
                   Thanks for joining. We'll reach out as Future of Work gets ready to
-                  launch in Salone.
+                  launch.
                 </p>
                 <button
                   type="button"
@@ -225,7 +225,7 @@ export default function WaitlistModal({ isOpen, prefillEmail, onClose }: ModalPr
                         type="tel"
                         inputMode="tel"
                         autoComplete="tel"
-                        placeholder="+232…"
+                        placeholder="+ country code"
                         className={inputClass}
                         {...register('phone')}
                       />
@@ -254,7 +254,7 @@ export default function WaitlistModal({ isOpen, prefillEmail, onClose }: ModalPr
                       <input
                         id="w-location"
                         className={inputClass}
-                        placeholder="e.g. Freetown"
+                        placeholder="e.g. Lagos"
                         {...register('location')}
                       />
                     </div>

@@ -4,8 +4,8 @@
  * line here is true today.
  */
 const facts = [
-  { text: 'Made in Sierra Leone', dot: '#2b2a6b' },
-  { text: 'Paid in Le or USD', dot: '#f7901e' },
+  { text: 'Built in Africa', dot: '#2b2a6b' },
+  { text: 'Local currency or USD', dot: '#f7901e' },
   { text: 'Launching 2026', dot: '#2d9c5a' },
 ]
 

@@ -8,22 +8,22 @@ import Reveal from './Reveal'
 const people = [
   {
     role: 'Designer',
-    place: 'Bo',
+    place: 'Lagos',
     line: 'Billing her first client abroad — and wants to keep what she earns instead of losing a cut to a middleman.',
   },
   {
     role: 'Developer',
-    place: 'Freetown',
+    place: 'Nairobi',
     line: "Done chasing invoices. Wants clear terms up front and money that actually lands when the work is done.",
   },
   {
     role: 'Writer',
-    place: 'Makeni',
+    place: 'Accra',
     line: 'Ready to set her own rates instead of taking whatever a client decides to offer.',
   },
   {
     role: 'Student',
-    place: 'Njala',
+    place: 'Freetown',
     line: 'Turning a weekend side hustle into steady, reviewable work he can build a name on.',
   },
 ]
@@ -37,7 +37,7 @@ export default function WhoItsFor() {
             Who it's for
           </p>
           <h2 className="mt-4 max-w-xl text-3xl font-semibold leading-tight tracking-tight text-ink sm:text-4xl">
-            Real people, all over Salone.
+            Real people, all over Africa.
           </h2>
           <p className="mt-4 max-w-md text-ink/55">
             We're still pre-launch, so meet the people we're building for — not
