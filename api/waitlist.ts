@@ -20,7 +20,11 @@ type Payload = {
   role?: unknown
   skill?: unknown
   location?: unknown
+  interestArea?: unknown
+  assessmentAnswers?: unknown
 }
+
+const interestAreas = ['Media', 'Software Engineering', 'Operations & Strategy']
 
 const json = (data: unknown, status = 200) =>
   new Response(JSON.stringify(data), {
@@ -56,6 +60,42 @@ export default async function handler(request: Request): Promise<Response> {
   const role = str(body.role)
   const skill = str(body.skill)
   const location = str(body.location)
+  const interestArea = str(body.interestArea)
+  const answers = body.assessmentAnswers
+
+  if (!interestAreas.includes(interestArea)) {
+    return json({ error: 'Choose an interest area.' }, 400)
+  }
+  if (!answers || typeof answers !== 'object' || Array.isArray(answers)) {
+    return json({ error: 'Complete the skills assessment.' }, 400)
+  }
+
+  const assessmentAnswers = answers as Record<string, unknown>
+  const activityInterests = assessmentAnswers.activityInterests
+  const toolsUsed = assessmentAnswers.toolsUsed
+  const experienceDescription = str(assessmentAnswers.experienceDescription)
+  const scenarioResponse = str(assessmentAnswers.scenarioResponse)
+  const supportNeeded = str(assessmentAnswers.supportNeeded)
+  const previousExperience = str(assessmentAnswers.previousExperience)
+  const otherTool = str(assessmentAnswers.otherTool)
+
+  if (
+    !Array.isArray(activityInterests) ||
+    activityInterests.length < 1 ||
+    activityInterests.length > 2 ||
+    !activityInterests.every((answer) => typeof answer === 'string') ||
+    !Array.isArray(toolsUsed) ||
+    toolsUsed.length < 1 ||
+    !toolsUsed.every((answer) => typeof answer === 'string') ||
+    !scenarioResponse ||
+    !supportNeeded ||
+    (interestArea === 'Media' && !experienceDescription) ||
+    (interestArea !== 'Media' && previousExperience !== 'Yes' && previousExperience !== 'No') ||
+    (interestArea !== 'Media' && previousExperience === 'Yes' && !experienceDescription) ||
+    (toolsUsed.includes('Other') && !otherTool)
+  ) {
+    return json({ error: 'Complete the skills assessment.' }, 400)
+  }
 
   // Validation mirrors the client: name required, and at least one contact.
   if (name.length < 2) {
@@ -76,6 +116,8 @@ export default async function handler(request: Request): Promise<Response> {
   if (phone) fields.Phone = phone
   if (skill) fields['Skill / Interest'] = skill
   if (location) fields.Location = location
+  fields['Interest Area'] = interestArea
+  fields['Assessment Responses'] = JSON.stringify(assessmentAnswers, null, 2)
   fields.Source = new URL(request.url).hostname
 
   const res = await fetch(url, {

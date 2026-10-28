@@ -5,6 +5,16 @@ export type WaitlistPayload = {
   role: 'Freelancer' | 'Client'
   skill?: string
   location?: string
+  interestArea: 'Media' | 'Software Engineering' | 'Operations & Strategy'
+  assessmentAnswers: {
+    activityInterests: string[]
+    previousExperience?: 'Yes' | 'No'
+    experienceDescription: string
+    scenarioResponse: string
+    toolsUsed: string[]
+    otherTool?: string
+    supportNeeded: string
+  }
 }
 
 export type WaitlistResult =
