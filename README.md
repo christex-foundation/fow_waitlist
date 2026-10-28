@@ -40,11 +40,17 @@ Create a base with a table (default name **`Waitlist`**) and these fields:
 | Role              | Single select (`Freelancer`, `Client`) |
 | Skill / Interest  | Single line text  |
 | Location          | Single line text  |
+| Interest Area     | Single select (`Media`, `Software Engineering`, `Operations & Strategy`) |
+| Assessment Responses | Long text (the assessment answers are saved as formatted JSON) |
 | Source            | Single line text  |
 | Created           | Created time      |
 
 > The function sends `typecast: true`, so a missing single-select option is
 > created automatically.
+
+Add the **Interest Area** and **Assessment Responses** fields to an existing
+Waitlist table before accepting assessment submissions. Airtable does not
+create missing fields automatically.
 
 ## Environment variables
 
